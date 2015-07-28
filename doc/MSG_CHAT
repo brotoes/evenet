@@ -1,7 +1,27 @@
 CHAT_OPEN:
-4 bytes: op_code
-4 bytes: receipient_count
-64 bytes: receipient_hash
+client to server:
+    4    byte: op_code
+    4    byte: receipient_count
+    64*n byte: receipient_hashes
+server reply with channel id:
+    4  byte: op_code
+    64 byte: channel_id
+server sends message to each requested chat member:
+    4 byte: op_code (CHAT_REQUESTED)
+    4 byte: channel_id
+    4 byte: recepient_count
+    64*n byte: receipient_hashes
+        *Note: if the chat member does not have another chat member
+        as a hash, they'll be send a null 64 bytes.
+each chat member sends accept message:
+    4 byte: op_code
+    4 byte: channel_id
+    4 byte: response (accept/deny)
+the server sends to each member as members join:
+    4 byte: op_code
+    4 byte: channel_id
+    4 byte: response (accept/deny)
+    4 byte: receipient_hash
 
 CHAT_SEND:
 4 bytes:  op_code
