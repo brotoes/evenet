@@ -15,7 +15,7 @@ void open_channel(char* message) {
     struct chan_open opendata;
     opendata.rec_count = message;
     opendata.rec_list = malloc(opendata->rec_count*sizeof(char));
-    for (int i=0; i<(*rec_count); i++) {
+    for (int i=0; i<opendata->rec_count; i++) {
         opendata.rec_list[i] = (message+4)+(64*i);
     }
     //TODO enter channel into table
