@@ -13,7 +13,15 @@ struct chan_request {
     int chan_id;
 };
 
+struct chat_message {
+    int op_code = CHAT_SENT;
+    int* chan_id;
+    int* length;
+    char* message;
+};
+
 void parse(char*);
+void send_chat(char*);
 void handle_response(char*);
 void open_channel(char*);
 #endif

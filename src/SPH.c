@@ -1,9 +1,12 @@
 #include <stdlib.h>
-#include <string.h>
 #include <time.h>
+
 void parse(char* message) {
     int* opcode = message;
     switch ((*opcode)) {
+        case CHAT_SEND:
+            send_chat(message+4);
+            break;
         case CHANNEL_OPEN:
             open_channel(message+4);           
             break;
@@ -11,6 +14,14 @@ void parse(char* message) {
             handle_response(message+4);
             break;
     }
+}
+
+void send_chat(char* message) {
+    struct chat_message chat_message;
+    chat_message.chan_id = message;
+    chat_message.length = message+4;
+    chat_message.message = message+8;
+    //TODO send message to channel
 }
 
 void handle_response(char* message) {
