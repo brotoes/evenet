@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <config.c>
+#include <config.h>
 #include <libssh/libssh.h>
 
 int main(int argc, char *argv[]) {

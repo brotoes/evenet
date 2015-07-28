@@ -3,7 +3,7 @@ BIN=evenet
 SDIR=src
 OBJS:=$(shell find src -name '*.c' -exec basename {} \; | sed 's/\.c/.o/')
 LIBS=-lssh
-CFLAGS=-std=c99 -Wall -I/usr/local/include
+CFLAGS=-std=c99 -Wall -I/usr/local/include -Iinih/ -Isrc/
 
 all: $(BIN)
 

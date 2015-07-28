@@ -2,15 +2,17 @@
 #include <libssh/libssh.h>
 #include <stdio.h>
 
-int connect(ssh_session *session) {
-    ssh_session session = ssh_new();
+int srv_connect(ssh_session *session) {
+    *session = ssh_new();
     if (session == NULL) {
         return -1;
     }
 
     
+    return 0;
 }
 
-int disconnect(ssh_session session) {
+int srv_disconnect(ssh_session session) {
     ssh_free(session);
+    return 0;
 }
