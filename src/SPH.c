@@ -8,13 +8,14 @@ void parse(char* message) {
             open_channel(message+4);           
             break;
         case CHANNEL_RESPONSE:
-            request_channel(message+4);
+            handle_response(message+4);
             break;
     }
 }
 
 void handle_response(char* message) {
-
+    //TODO update accept/deny status
+    //TODO get recipient hash from chan id
 }
 void open_channel(char* message) {
     struct chan_open opendata;
