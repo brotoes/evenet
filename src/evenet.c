@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <config.c>
 #include <libssh/libssh.h>
 
 int main(int argc, char *argv[]) {
+    get_conf_opt("server", "host");
+
+    return 0;
     ssh_session session = ssh_new();
     ssh_channel channel;
     int rc;

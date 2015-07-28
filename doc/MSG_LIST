@@ -39,7 +39,7 @@ Client -> Server:
         Notifies server that chat channel has been closed
         *not a request, but a notice?
     CHAT_SEND
-        sends a message to another user
+        sends a message to another user through a channel.
     CHAT_STATUS_SET
         Notifies the server that status has changed. set to away/available? etc.
     CHAT_STATUS_GET
