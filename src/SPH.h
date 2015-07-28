@@ -20,7 +20,14 @@ struct chat_message {
     char* message;
 };
 
+struct chat_close {
+    int op_code = CHAT_CLOSE;
+    int* chan_id;
+    char* closer_hash;
+};
+
 void parse(char*);
+void close_chat(char*);
 void send_chat(char*);
 void handle_response(char*);
 void open_channel(char*);
