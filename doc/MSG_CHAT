@@ -23,8 +23,14 @@ the server sends to each member as members join:
     4 byte: response (accept/deny)
     4 byte: receipient_hash
 
-CHAT_SEND:
-4 bytes:  op_code
-64 bytes:  channel_id
-4 bytes: message_length
-N bytes: message
+sending a chat:
+client sends chat message to server
+    4 bytes:  op_code (CHAT_SEND)
+    64 bytes:  channel_id
+    4 bytes: message_length
+    N bytes: message
+server sends chat message to each member of channel
+    4 bytes: op_code (CHAT_SENT)
+    64 bytes: channel_id
+    4 bytes: message_length
+    N bytes: message
