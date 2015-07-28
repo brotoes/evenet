@@ -1,0 +1,10 @@
+CHAT_OPEN:
+4 bytes: op_code
+4 bytes: receipient_count
+64 bytes: receipient_hash
+
+CHAT_SEND:
+4 bytes:  op_code
+64 bytes:  channel_id
+4 bytes: message_length
+N bytes: message

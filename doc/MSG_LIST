@@ -38,6 +38,8 @@ Client -> Server:
     CHAT_CLOSE
         Notifies server that chat channel has been closed
         *not a request, but a notice?
+    CHAT_SEND
+        sends a message to another user
     CHAT_STATUS_SET
         Notifies the server that status has changed. set to away/available? etc.
     CHAT_STATUS_GET
@@ -45,14 +47,13 @@ Client -> Server:
     
 Server -> Client:
     - post messages -
-    NEW_POST
-        Sends metadata of post to client. client may then request the post text?
-        *or should the whole post be send?
+    POST_NEW
+        send a new posted post to the client.
 
     - friend system messages -
-    ADDED_AS_FRIEND
+    FRIEND_ADDED
         notifies the user that they've been added as a friend.
-    REMOVED_AS_FRIEND
+    FRIEND_REMOVED
         notifies the user that they've ben removed as a friend.
 
     - chat messages -
