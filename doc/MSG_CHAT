@@ -34,3 +34,12 @@ server sends chat message to each member of channel
     64 bytes: channel_id
     4 bytes: message_length
     N bytes: message
+
+closing a chat:
+client sends close message to server
+    4 bytes: op_code (CHAT_CLOSE)
+    64 bytes: channel_id
+server sends notice to all other members
+    4 bytes: op_code (CHAT_CLOSED)
+    64 bytes: channel_id
+    64 bytes: user_hash
