@@ -12,8 +12,8 @@ void parse(char* message) {
         case CHANNEL_OPEN:
             open_channel(message+4);           
             break;
-        case CHAT_CLOSE:
-            close_chat(message+4);
+        case CHANNEL_CLOSE:
+            close_channel(message+4);
             break;
         case CHANNEL_RESPONSE:
             handle_response(message+4);
@@ -21,7 +21,7 @@ void parse(char* message) {
     }
 }
 
-void close_chat(char* message) {
+void close_channel(char* message) {
     struct chat_close close_data;
     close_data.chan_id = (int*) message;
     //TODO get sender of close message
@@ -43,14 +43,16 @@ void handle_response(char* message) {
 void open_channel(char* message) {
     struct chan_open opendata;
     opendata.rec_count = (int*) message;
-    opendata.rec_list = malloc(opendata->rec_count*sizeof(char));
-    for (int i=0; i<opendata->rec_count; i++) {
+    opendata.rec_list = malloc(*opendata.rec_count * sizeof(char));
+    for (int i=0; i < *opendata.rec_count; i++) {
         opendata.rec_list[i] = (message+4)+(64*i);
     }
     struct chan_request chan_data;
     chan_data.open_data = opendata;
-    srand(time());
-    chan_data.chan_id = rand();
+    //NOT CRYPTOGRAPHICAL RNG
+    //srand(time());
+    //chan_data.chan_id = rand();
+    chan_data.chan_id = 1;
     //TODO enter channel into table
     //TODO reply to client with channel id
     //TODO send msg CHANNEL_REQUESTED to each recipient 

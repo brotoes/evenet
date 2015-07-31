@@ -1,7 +1,7 @@
 #include <opcodes.h>
 #include <CPH.h>
 
-void parse(char* message) {
+void client_parse(char* message) {
     int* opcode = (int*) message;
     switch ((*opcode)) {
         case CHANNEL_OPEN:

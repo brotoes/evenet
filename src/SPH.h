@@ -23,7 +23,7 @@ struct chat_close {
 };
 
 void parse(char*);
-void close_chat(char*);
+void close_channel(char*);
 void send_chat(char*);
 void handle_response(char*);
 void open_channel(char*);
