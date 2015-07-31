@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <time.h>
-#include "SPH.h"
+#include <opcodes.h>
+#include <SPH.h>
 
 void parse(char* message) {
     int* opcode = (int*) message;
