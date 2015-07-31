@@ -1,0 +1,3 @@
+#define CHANNEL_OPEN 0x00000101
+
+#define CHAT_SEND    0x00000201
